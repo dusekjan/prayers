@@ -1,0 +1,22 @@
+/* Sdílené styly pro celý web (placeholder). */
+
+:root {
+  --color-accent: #ffac26;
+  --color-accent-strong: #ea7800;
+  --color-text: #121212;
+  --color-bg: #ffffff;
+  --font-sans: system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
