@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="cs">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Modlitby online</title>
+
+        <meta name="description" content="Placeholder – rozcestník modliteb online." />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Modlitby online" />
+        <meta property="og:title" content="Modlitby online" />
+        <meta property="og:description" content="Placeholder – rozcestník modliteb online." />
+        <meta property="og:url" content="https://modlitbyonline.cz/" />
+        <meta property="og:image" content="https://modlitbyonline.cz/img/logo1200x630.png" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <link rel="canonical" href="https://modlitbyonline.cz/" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/img/logo192.png" />
+        <link rel="stylesheet" href="../src/styles/home.css" />
+
+        <script type="module" src="../src/scripts/app.ts"></script>
+    </head>
+    <body>
+        {{> nav}}
+
+        <header class="header">
+            <h1>Modlitby online</h1>
+        </header>
+
+        <main>
+            <div>ruzenec</div>
+
+            <section id="prayer-tabs">
+                <fieldset>
+                    <legend class="visually-hidden">Modlitby</legend>
+
+                    <label>
+                        <input type="radio" name="prayer-tab" value="recent" class="visually-hidden" checked />
+                        Naposledy navštívené
+                    </label>
+
+                    <label>
+                        <input type="radio" name="prayer-tab" value="favorites" class="visually-hidden" />
+                        Oblíbené
+                    </label>
+                </fieldset>
+
+                <div class="prayer-panels">
+                    <ul data-panel="recent">
+                        <li>Zatím nemáš žádné naposledy navštívené modlitby.</li>
+                    </ul>
+
+                    <ul data-panel="favorites">
+                        <li>Zatím nemáš žádné oblíbené modlitby.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <ul>
+                    <li><a href="/pompejska/">Pompejská novéna</a></li>
+                    <li><a href="https://ruzeneconline.cz">Modlitba růžence</a></li>
+                    <li><a href="https://brigitaonline.cz">Pobožnost svaté Brigity</a></li>
+                </ul>
+            </section>
+
+            <section>
+                denní modlitby
+            </section>
+        </main>
+
+        {{> footer}}
+    </body>
+</html>

@@ -1,0 +1,51 @@
+@import "./common.css";
+
+#prayer-tabs {
+    & fieldset {
+        display: flex;
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0;
+        border: none;
+
+        & > label {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            opacity: 0.5;
+
+            &:has(input:checked) {
+                opacity: 1;
+                font-weight: 700;
+            }
+        }
+    }
+
+    & .prayer-panels {
+        overflow: hidden;
+
+        & > ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            height: 100px;
+            display: none;
+        }
+    }
+
+    &:has([value="recent"]:checked) [data-panel="recent"],
+    &:has([value="favorites"]:checked) [data-panel="favorites"] {
+        display: block;
+        animation: prayer-list-in 0.3s ease;
+    }
+}
+
+@keyframes prayer-list-in {
+    from {
+        transform: translateX(2rem);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

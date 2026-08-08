@@ -1,0 +1,65 @@
+/* @import "./typo.css"; */
+@import "./widgets.css";
+
+:root {
+    color-scheme: light;  /* pripravit se na theme-color tag */
+
+    /* ↓ colors ↓ */
+    --orange: rgb(255, 172, 38);            /* #ffac26 */
+    --orange-10: rgb(255, 172, 38, 0.1);
+    /*--orange-50: rgb(255, 172, 38, 0.5);
+    --orange-70: rgb(255, 172, 38, 0.7);
+    --orange-90: rgb(255, 172, 38, 0.9); */
+    --orange-darken-30: rgb(205, 126, 0);  /* #cd7e00 */
+
+    --grey: rgb(60, 70, 83);
+    --grey-85: rgb(60, 70, 83, 0.85);
+    --grey-75: rgb(60, 70, 83, 0.74);
+    --grey-20: rgb(60, 70, 83, 0.18);
+
+    /* --grey-warm: rgb(121, 117, 108);
+    --grey-warm-20: rgb(121, 117, 108, 0.18); */
+
+    --color-text: #1a1a1a;
+    --color-bg: #ffffff;
+    /* ↑ colors ↑ */
+
+    --content-width: min(85%, 1280px);
+
+
+    &:has(body.dark) {
+        color-scheme: dark;
+        /* ↓ colors ↓ */
+        --color-bg: #121212;
+        --color-text: rgb(255, 255, 255, 0.87);
+        /* ↑ colors ↑ */
+    }
+}
+
+html {
+    box-sizing: border-box;
+    font-family: "Noto Serif", arial, sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    font-family: inherit;
+}
+
+body {
+    margin: 0;
+    color: var(--color-text);
+    background: var(--color-bg);
+
+	min-height: 100vh;
+	min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    & > main { flex-grow: 1; }
+}
+
+main {
+    border: 1px solid black;
+    width: var(--content-width);
+    margin: 0 auto;
+}
