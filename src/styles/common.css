@@ -1,5 +1,5 @@
-/* @import "./typo.css"; */
 @import "./widgets.css";
+@import "./typo.css";
 
 :root {
     color-scheme: light;  /* pripravit se na theme-color tag */
@@ -14,17 +14,19 @@
 
     --grey: rgb(60, 70, 83);
     --grey-85: rgb(60, 70, 83, 0.85);
-    --grey-75: rgb(60, 70, 83, 0.74);
-    --grey-20: rgb(60, 70, 83, 0.18);
+    --grey-75: rgb(60, 70, 83, 0.75);
 
-    /* --grey-warm: rgb(121, 117, 108);
-    --grey-warm-20: rgb(121, 117, 108, 0.18); */
+    /* --grey-warm: rgb(121, 117, 108);  */     /* #79756c */
+    --grey-warm: rgb(215, 195, 173);
+    --grey-warm-30: rgb(215, 195, 173, 0.3);
+    --grey-warm-40: rgb(215, 195, 173, 0.4);
+    --grey-warm-60: rgb(215, 195, 173, 0.6);
 
     --color-text: #1a1a1a;
     --color-bg: #ffffff;
     /* ↑ colors ↑ */
 
-    --content-width: min(85%, 1280px);
+    --content-width: min(85%, 1060px);
 
 
     &:has(body.dark) {
@@ -38,18 +40,18 @@
 
 html {
     box-sizing: border-box;
-    font-family: "Noto Serif", arial, sans-serif;
 }
 
 *, *::before, *::after {
     box-sizing: inherit;
     font-family: inherit;
+    font-size: inherit;
 }
 
 body {
     margin: 0;
-    color: var(--color-text);
     background: var(--color-bg);
+    color: var(--color-text);
 
 	min-height: 100vh;
 	min-height: 100dvh;
@@ -59,7 +61,83 @@ body {
 }
 
 main {
-    border: 1px solid black;
     width: var(--content-width);
     margin: 0 auto;
+}
+
+a {
+    color: var(--grey);
+    text-decoration: none;
+    &:hover { text-decoration: underline }
+
+    &.home {
+        font-size: 18px;
+        font-weight: 500;
+    }
+}
+
+.header {
+    text-align: center;
+    margin: 84px 0;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & h1 {
+        margin: 0;
+        padding: 0 45px;
+        background-color: var(--color-bg);
+        z-index: 1;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        border: 2px solid var(--orange);
+    }
+}
+
+.nav {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--grey-warm-60);
+
+    & > div {
+        margin: 0 auto;
+        width: var(--content-width)
+    }
+}
+
+.footer {
+    margin-top: 24px;
+    padding: 24px 0;
+    border-top: 1px solid var(--grey-warm-60);
+
+    p {
+        margin: 24px 0 0;
+        font-size: 14px;
+        color: var(--grey-75);
+    }
+
+    a[href^="mailto"] {
+        font-size: 14px;
+        color: var(--grey-75);
+    }
+
+    & > div {
+        margin: 0 auto;
+        width: var(--content-width);
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        & > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
 }

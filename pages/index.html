@@ -6,6 +6,7 @@
         <title>Modlitby online</title>
 
         <meta name="description" content="Placeholder – rozcestník modliteb online." />
+        <meta name="author" content="Jan Dušek" />
 
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Modlitby online" />
@@ -16,24 +17,31 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
         <link rel="canonical" href="https://modlitbyonline.cz/" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/img/logo192.png" />
         <link rel="stylesheet" href="../src/styles/home.css" />
 
-        <script type="module" src="../src/scripts/app.ts"></script>
+        <script type="module" src="../src/scripts/home.ts"></script>
     </head>
     <body>
         {{> nav}}
 
-        <header class="header">
-            <h1>Modlitby online</h1>
-        </header>
+        {{> header title="Modlitby online"}}
 
         <main>
-            <div>ruzenec</div>
+            <section id="rosary">
+                {{> prayer-card
+                    href="https://ruzeneconline.cz"
+                    icon="icon-infinity"
+                    title="Modlitba růžence"
+                    description= "Tradiční modlitba rozjímající nad životem Ježíše Krista a Panny Marie."
+                    badge="Pobožnost"
+                    showFavorite=false
+                }}
+            </section>
 
             <section id="prayer-tabs">
                 <fieldset>
@@ -52,25 +60,130 @@
 
                 <div class="prayer-panels">
                     <ul data-panel="recent">
-                        <li>Zatím nemáš žádné naposledy navštívené modlitby.</li>
+                        <li><i>Zatím nemáš žádné naposledy navštívené modlitby.</i></li>
                     </ul>
 
                     <ul data-panel="favorites">
-                        <li>Zatím nemáš žádné oblíbené modlitby.</li>
+                        <li><i>Zatím nemáš žádné oblíbené modlitby.</i></li>
                     </ul>
                 </div>
             </section>
 
-            <section>
+            <section id="search">
+                <search>
+                    <label>
+                        Hledat modlitbu, novénu...
+                        <input type="search" placeholder="Pompejská novéna, růženec, Brigita…" />
+                    </label>
+                </search>
+            </section>
+
+            <section id="prayers">
+                <h2>Pobožnosti</h2>
                 <ul>
-                    <li><a href="/pompejska/">Pompejská novéna</a></li>
-                    <li><a href="https://ruzeneconline.cz">Modlitba růžence</a></li>
-                    <li><a href="https://brigitaonline.cz">Pobožnost svaté Brigity</a></li>
+                    <li>
+                        {{> prayer-card
+                            href="/pompejska/"
+                            icon="icon-flame"
+                            title="Pompejská novéna"
+                            description= "Devět dní vytrvalé modlitby růžence k Panně Marii Pompejské."
+                            badge="Novéna"
+                            showFavorite=true
+                        }}
+                    </li>
+                    <li>
+                        {{> prayer-card
+                            href="https://ruzeneconline.cz"
+                            icon="icon-infinity"
+                            title="Modlitba růžence"
+                            description= "Tradiční modlitba rozjímající nad životem Ježíše Krista a Panny Marie."
+                            badge="Pobožnost"
+                            showFavorite=true
+                        }}
+                    </li>
+                    <li>
+                        {{> prayer-card
+                            href="https://brigitaonline.cz"
+                            icon="icon-sparkles"
+                            title="Pobožnost svaté Brigity"
+                            description= "Modlitby zjevené svaté Brigitě Švédské, rozjímající o utrpení Ježíše Krista."
+                            badge="Pobožnost"
+                            showFavorite=true
+                        }}
+                    </li>
                 </ul>
             </section>
 
-            <section>
-                denní modlitby
+            <section id="daily-prayers">
+                <h2>Denní modlitby</h2>
+                <ul>
+                    <li>
+                        {{> prayer-card
+                            href="/pompejska/"
+                            icon="icon-flame"
+                            title="Anděl páně"
+                            description= "Připomínka vtělení Krista, tradičně třikrát denně."
+                            badge="Modlitba"
+                            showFavorite=true
+                        }}
+                    </li>
+                    <li>
+                        {{> prayer-card
+                            href="https://ruzeneconline.cz"
+                            icon="icon-infinity"
+                            title="Modlitba před jídlem"
+                            description= "Krátké poděkování za pokrm a požehnání stolu."
+                            badge="Modlitba"
+                            showFavorite=true
+                        }}
+                    </li>
+                </ul>
+            </section>
+
+            <section id="basic-prayers">
+                <h2>Základní modlitby</h2>
+                <ul>
+                    <li>
+                        {{> prayer-card
+                            href="/pompejska/"
+                            icon="icon-flame"
+                            title="Otče náš"
+                            description= "Modlitba, kterou naučil své učedníky sám Ježíš."
+                            badge="Modlitba"
+                            showFavorite=true
+                        }}
+                    </li>
+                    <li>
+                        {{> prayer-card
+                            href="https://ruzeneconline.cz"
+                            icon="icon-infinity"
+                            title="Zdrávas Maria"
+                            description= "Prosba o přímluvu Panny Marie."
+                            badge="Modlitba"
+                            showFavorite=true
+                        }}
+                    </li>
+                    <li>
+                        {{> prayer-card
+                            href="https://brigitaonline.cz"
+                            icon="icon-sparkles"
+                            title="Sláva Otci"
+                            description= "Krátká chvála Nejsvětější Trojice."
+                            badge="Modlitba"
+                            showFavorite=true
+                        }}
+                    </li>
+                    <li>
+                        {{> prayer-card
+                            href="https://brigitaonline.cz"
+                            icon="icon-sparkles"
+                            title="Věřím v Boha"
+                            description= "Vyznání víry shrnující základ křesťanského učení."
+                            badge="Modlitba"
+                            showFavorite=true
+                        }}
+                    </li>
+                </ul>
             </section>
         </main>
 

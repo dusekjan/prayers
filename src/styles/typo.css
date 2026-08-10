@@ -1,0 +1,29 @@
+/* Noto Serif a Inter stahujeme v HTML */
+html {
+    font-family: "Noto Serif", arial, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 48px;
+    line-height: 56px;
+}
+
+h2 {
+    font-size: 32px;
+    line-height: 40px;
+}
+
+h3 {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.inter {
+    font-family: "Inter", "Noto Serif", arial, sans-serif;
+}

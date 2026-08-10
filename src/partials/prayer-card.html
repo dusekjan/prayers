@@ -1,0 +1,14 @@
+<prayer-card>
+    <div>
+        {{#if icon}}{{> (lookup . "icon") }}{{/if}}
+        {{#if badge}}<span class="badge inter">{{badge}}</span>{{/if}}
+        {{#if showFavorite}}
+            <label class="favorite">
+                <input class="visually-hidden" type="checkbox" aria-label="Přidat mezi oblíbené" />
+                {{> icon-heart}}
+            </label>
+        {{/if}}
+    </div>
+    <h3><a href="{{href}}">{{title}}</a></h3>  <!-- stretched link -->
+    {{#if description}}<p class="inter">{{description}}</p>{{/if}}
+</prayer-card>
