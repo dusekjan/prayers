@@ -76,8 +76,24 @@ prayer-card {
         }
 
         & .favorite {
-            z-index: 1;  /* zustava stale klikacim */
             cursor: pointer;
+            z-index: 1;  /* zustava stale klikacim */
+            display: flex;
+            padding: 10px;
+            margin: -10px;  /* vetsi hitbox bez posunu v layoutu */
+
+            svg {
+                fill: transparent;
+                transition: fill 0.2s ease-out;
+            }
+
+            &:hover {
+                & svg { fill: var(--grey-warm-30) }
+            }
+
+            &:has([type=checkbox]:checked) {
+                & svg { fill: var(--orange) }
+            }
         }
 
         & .badge {

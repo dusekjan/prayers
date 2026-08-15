@@ -6,7 +6,6 @@
 
     /* ↓ colors ↓ */
     --orange: rgb(255, 172, 38);            /* #ffac26 */
-    --orange-75: rgb(from var(--orange) r g b / 0.75);
 
     --orange-darken-25: rgb(220, 136, 0);  /* #dc8800 */
     --orange-darken-30: rgb(205, 126, 0);  /* #cd7e00 */
@@ -86,13 +85,15 @@ button.primary {
     font-weight: 500;
     color: var(--grey);
     background-color: var(--orange);
-    transition: background-color 0.2s ease-out;
+    transition: background-color 0.2s ease-out, color 0.2s ease-out;
 
     &:hover {
+        color: var(--color-text);
         background-color: var(--orange-darken-25);
     }
 
     &:active {
+        color: var(--color-text);
         background-color: var(--orange-darken-35);
         transition: none;
     }
@@ -132,9 +133,10 @@ button.primary {
     }
 
     & a {
-        color: var(--grey);
+        transition: color 0.2s ease-out;
         font-size: 18px;
         font-weight: 500;
+        &:not(:hover) { color: var(--grey) }
     }
 }
 
@@ -150,14 +152,15 @@ button.primary {
     }
 
     & a {
-        color: var(--grey);
+        transition: color 0.2s ease-out;
         font-size: 18px;
         font-weight: 500;
+        &:not(:hover) { color: var(--grey) }
     }
 
     & a[href^="mailto"] {
         font-size: 14px;
-        color: var(--grey-75);
+        &:not(:hover) { color: var(--grey-75) }
     }
 
     & button {

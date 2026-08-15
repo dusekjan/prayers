@@ -1,6 +1,9 @@
-export class PrayerCard extends HTMLElement {
+import { normalize } from "../lib";
+
+export default class PrayerCard extends HTMLElement {
     get favoriteButton() { return this.querySelector<HTMLInputElement>(".favorite input") }
     get link() { return this.querySelector<HTMLAnchorElement>("h3 a") }
+    get searchText() { return normalize(this.textContent || "") }
 
     connectedCallback() {
         this.addEventListener("click", this);
