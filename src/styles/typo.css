@@ -27,3 +27,9 @@ h3 {
 .inter {
     font-family: "Inter", "Noto Serif", arial, sans-serif;
 }
+
+.h2-title {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600;
+}

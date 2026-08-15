@@ -6,21 +6,21 @@
 
     /* ↓ colors ↓ */
     --orange: rgb(255, 172, 38);            /* #ffac26 */
-    --orange-10: rgb(255, 172, 38, 0.1);
-    /*--orange-50: rgb(255, 172, 38, 0.5);
-    --orange-70: rgb(255, 172, 38, 0.7);
-    --orange-90: rgb(255, 172, 38, 0.9); */
+    --orange-75: rgb(from var(--orange) r g b / 0.75);
+
+    --orange-darken-25: rgb(220, 136, 0);  /* #dc8800 */
     --orange-darken-30: rgb(205, 126, 0);  /* #cd7e00 */
+    --orange-darken-35: rgb(190, 118, 0);  /* #be7600 */
 
     --grey: rgb(60, 70, 83);
-    --grey-85: rgb(60, 70, 83, 0.85);
-    --grey-75: rgb(60, 70, 83, 0.75);
+    --grey-75: rgb(from var(--grey) r g b / 0.75);
+    --grey-85: rgb(from var(--grey) r g b / 0.85);
 
-    /* --grey-warm: rgb(121, 117, 108);  */     /* #79756c */
     --grey-warm: rgb(215, 195, 173);
-    --grey-warm-30: rgb(215, 195, 173, 0.3);
-    --grey-warm-40: rgb(215, 195, 173, 0.4);
-    --grey-warm-60: rgb(215, 195, 173, 0.6);
+    --grey-warm-10: rgb(from var(--grey-warm) r g b / 0.1);
+    --grey-warm-30: rgb(from var(--grey-warm) r g b / 0.3);
+    --grey-warm-40: rgb(from var(--grey-warm) r g b / 0.4);
+    --grey-warm-60: rgb(from var(--grey-warm) r g b / 0.6);
 
     --color-text: #1a1a1a;
     --color-bg: #ffffff;
@@ -66,13 +66,35 @@ main {
 }
 
 a {
-    color: var(--grey);
+    color: var(--color-text);
     text-decoration: none;
     &:hover { text-decoration: underline }
+}
 
-    &.home {
-        font-size: 18px;
-        font-weight: 500;
+:focus-visible,
+label:has(.visually-hidden:focus-visible) {  /* prstenec prebira viditelny label */
+    outline: 2px solid var(--orange);
+    outline-offset: 2px;
+}
+
+button.primary {
+    cursor: pointer;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+
+    font-weight: 500;
+    color: var(--grey);
+    background-color: var(--orange);
+    transition: background-color 0.2s ease-out;
+
+    &:hover {
+        background-color: var(--orange-darken-25);
+    }
+
+    &:active {
+        background-color: var(--orange-darken-35);
+        transition: none;
     }
 }
 
@@ -108,6 +130,12 @@ a {
         margin: 0 auto;
         width: var(--content-width)
     }
+
+    & a {
+        color: var(--grey);
+        font-size: 18px;
+        font-weight: 500;
+    }
 }
 
 .footer {
@@ -115,15 +143,26 @@ a {
     padding: 24px 0;
     border-top: 1px solid var(--grey-warm-60);
 
-    p {
+    & p {
         margin: 24px 0 0;
         font-size: 14px;
         color: var(--grey-75);
     }
 
-    a[href^="mailto"] {
+    & a {
+        color: var(--grey);
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    & a[href^="mailto"] {
         font-size: 14px;
         color: var(--grey-75);
+    }
+
+    & button {
+        font-size: 14px;
+        padding: 6px 16px;
     }
 
     & > div {
@@ -138,6 +177,8 @@ a {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+
+            &:last-child { align-items: flex-end }
         }
     }
 }

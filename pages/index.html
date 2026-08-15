@@ -47,12 +47,12 @@
                 <fieldset>
                     <legend class="visually-hidden">Modlitby</legend>
 
-                    <label>
+                    <label class="h2-title">
                         <input type="radio" name="prayer-tab" value="recent" class="visually-hidden" checked />
                         Naposledy navštívené
                     </label>
 
-                    <label>
+                    <label class="h2-title">
                         <input type="radio" name="prayer-tab" value="favorites" class="visually-hidden" />
                         Oblíbené
                     </label>
@@ -71,10 +71,8 @@
 
             <section id="search">
                 <search>
-                    <label>
-                        Hledat modlitbu, novénu...
-                        <input type="search" placeholder="Pompejská novéna, růženec, Brigita…" />
-                    </label>
+                    {{> icon-search}}
+                    <input type="search" aria-label="Hledat modlitbu, novénu..." placeholder="Pompejská novéna, růženec, Brigita…" />
                 </search>
             </section>
 
@@ -93,10 +91,20 @@
                     </li>
                     <li>
                         {{> prayer-card
-                            href="https://ruzeneconline.cz"
-                            icon="icon-infinity"
-                            title="Modlitba růžence"
-                            description= "Tradiční modlitba rozjímající nad životem Ježíše Krista a Panny Marie."
+                            href="https://brigitaonline.cz/#rocni"
+                            icon="icon-sparkles"
+                            title="Tajemství spásy"
+                            description= "Roční pobožnost svaté Brigity Švédské, rozjímající o utrpení Ježíše Krista."
+                            badge="Pobožnost"
+                            showFavorite=true
+                        }}
+                    </li>
+                    <li>
+                        {{> prayer-card
+                            href="https://brigitaonline.cz/#dvanactileta"
+                            icon="icon-heart"
+                            title="Pobožnost ke cti Ježíšovy přečisté krve"
+                            description= "Pobožnost na dvanáct let ke cti přečisté krve Ježíše Krista."
                             badge="Pobožnost"
                             showFavorite=true
                         }}
@@ -105,7 +113,7 @@
                         {{> prayer-card
                             href="https://brigitaonline.cz"
                             icon="icon-sparkles"
-                            title="Pobožnost svaté Brigity"
+                            title="Korunka k Božímu milosrdenství"
                             description= "Modlitby zjevené svaté Brigitě Švédské, rozjímající o utrpení Ježíše Krista."
                             badge="Pobožnost"
                             showFavorite=true
@@ -177,7 +185,7 @@
                         {{> prayer-card
                             href="https://brigitaonline.cz"
                             icon="icon-sparkles"
-                            title="Věřím v Boha"
+                            title="Apoštolské vyznání víry"
                             description= "Vyznání víry shrnující základ křesťanského učení."
                             badge="Modlitba"
                             showFavorite=true
