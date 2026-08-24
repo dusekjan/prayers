@@ -1,14 +1,12 @@
-// odebere diakritiku, prevede na mala pismena a nahradi interpunkci i bile znaky jednou mezerou
 export function normalize(value: string) {
     return value
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
+        .normalize("NFD")                  // rozlozi pismena na zakladni znak a diakriticke znamenko
+        .replace(/[\u0300-\u036f]/g, "")   // odstrani oddelena diakriticka znamenka
         .toLowerCase()
-        .replace(/[^\p{L}\p{N}]+/gu, " ")
+        .replace(/[^\p{L}\p{N}]+/gu, " ")  // vse krome pismen a cislic nahradi jednou mezerou
         .trim();
 }
 
-// odlozi volani fn, dokud neprestanou prichazet udalosti po dobu delay ms
 type CallbackFn = (...args: any[]) => void;
 export function debounce(callback: CallbackFn, delay: number) {
     let timeoutId: number;

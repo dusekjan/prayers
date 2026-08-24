@@ -1,4 +1,8 @@
-/* Noto Serif a Inter stahujeme v HTML */
+/* Noto Serif a Inter stahujeme v HTML
+"Inter": jen weight 400, bez kurzivy
+"Noto Serif": weight 100-900 plynule, normal i kurziva
+*/
+
 html {
     font-family: "Noto Serif", arial, sans-serif;
     font-size: 16px;

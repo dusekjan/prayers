@@ -1,4 +1,4 @@
-<prayer-card>
+<prayer-card{{#if prayerId}} data-prayer-id="{{prayerId}}"{{/if}}>
     <div>
         {{#if icon}}{{> (lookup . "icon") }}{{/if}}
         {{#if badge}}<span class="badge inter">{{badge}}</span>{{/if}}
@@ -10,5 +10,5 @@
         {{/if}}
     </div>
     <h3><a href="{{href}}">{{title}}</a></h3>  <!-- stretched link -->
-    {{#if description}}<p class="inter">{{description}}</p>{{/if}}
+    {{#if description}}<p class="description inter">{{description}}</p>{{/if}}
 </prayer-card>

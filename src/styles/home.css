@@ -14,7 +14,7 @@ h2 {
 
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 1fr;
+        grid-auto-rows: auto;
         gap: 24px;
 
         & prayer-card { height: 100% }
@@ -42,6 +42,7 @@ h2 {
         border-radius: 8px;
         color: var(--color-text);
         transition: border-color 0.2s ease-out;
+        background-color: var(--grey-warm-10);
 
         &::placeholder {
             font-style: italic;
@@ -60,7 +61,8 @@ h2 {
 
 prayer-card {
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
     border: 1px solid var(--grey-warm-60);
     border-radius: 8px;
     padding: 24px;
@@ -70,6 +72,7 @@ prayer-card {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        margin-bottom: 16px;
 
         & svg {
             color: var(--orange);
@@ -79,8 +82,8 @@ prayer-card {
             cursor: pointer;
             z-index: 1;  /* zustava stale klikacim */
             display: flex;
-            padding: 10px;
-            margin: -10px;  /* vetsi hitbox bez posunu v layoutu */
+            padding: 14px;
+            margin: -14px;  /* vetsi hitbox bez posunu v layoutu */
 
             svg {
                 fill: transparent;
@@ -112,7 +115,7 @@ prayer-card {
     }
 
     & h3 {
-        margin: 16px 0 8px;
+        margin: 0 0 8px;
 
         & a {
             transition: color 0.2s ease-out;
@@ -132,10 +135,24 @@ prayer-card {
 
         a { color: var(--orange) }
     }
+
+    &.mini {
+        padding: 16px;
+        background-color: var(--grey-warm-10);
+
+        & h3 {
+            font-size: 18px;
+            line-height: 24px;
+            font-weight: 500;
+            margin: auto 0 0;
+        }
+
+        & .badge, & .description, & .favorite { display: none }
+    }
 }
 
 #prayer-tabs {
-    margin: 64px 0;
+    margin: 64px 0 40px;
 
     & fieldset {
         padding: 0;
@@ -166,19 +183,41 @@ prayer-card {
 
     & .prayer-panels {
         overflow: hidden;
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 16px;  /* konci nad scrollbarem */
+            width: 100px;
+            z-index: 2;    /* nad srdickem v karte */
+            pointer-events: none;
+            background: linear-gradient(to right, transparent, var(--color-bg));
+        }
 
         & > ul {
             margin: 0;
-            padding: 0;
+            padding: 0 48px 24px 0;
             list-style: none;
-            height: 100px;
             display: none;
+            gap: 12px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+
+            & li {
+                flex: 0 0 auto;
+                min-width: 200px;
+                min-height: 100px;
+                & prayer-card { height: 100% }
+            }
         }
     }
 
     &:has([value="recent"]:checked) [data-panel="recent"],
     &:has([value="favorites"]:checked) [data-panel="favorites"] {
-        display: block;
+        display: flex;
         animation: prayer-list-in 0.3s ease;
     }
 }

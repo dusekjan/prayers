@@ -60,11 +60,11 @@
 
                 <div class="prayer-panels">
                     <ul data-panel="recent">
-                        <li><i>Zatím nemáš žádné naposledy navštívené modlitby.</i></li>
+                        <li><i>Zatím nemáte naposledy navštívené modlitby.</i></li>
                     </ul>
 
                     <ul data-panel="favorites">
-                        <li><i>Zatím nemáš žádné oblíbené modlitby.</i></li>
+                        <li><i>Zatím nemáte žádné oblíbené modlitby.</i></li>
                     </ul>
                 </div>
             </section>
@@ -81,16 +81,18 @@
                 <ul>
                     <li>
                         {{> prayer-card
+                            prayerId="pompejska"
                             href="/pompejska/"
                             icon="icon-flame"
                             title="Pompejská novéna"
-                            description= "Devět dní vytrvalé modlitby růžence k Panně Marii Pompejské."
+                            description="Devět dní vytrvalé modlitby růžence k Panně Marii Pompejské."
                             badge="Novéna"
                             showFavorite=true
                         }}
                     </li>
                     <li>
                         {{> prayer-card
+                            prayerId="tajemstvi-spasy"
                             href="https://brigitaonline.cz/#rocni"
                             icon="icon-sparkles"
                             title="Tajemství spásy"
@@ -101,6 +103,7 @@
                     </li>
                     <li>
                         {{> prayer-card
+                            prayerId="precista-krev"
                             href="https://brigitaonline.cz/#dvanactileta"
                             icon="icon-heart"
                             title="Pobožnost ke cti Ježíšovy přečisté krve"
@@ -111,6 +114,7 @@
                     </li>
                     <li>
                         {{> prayer-card
+                            prayerId="korunka"
                             href="https://brigitaonline.cz"
                             icon="icon-sparkles"
                             title="Korunka k Božímu milosrdenství"
@@ -127,6 +131,7 @@
                 <ul>
                     <li>
                         {{> prayer-card
+                            prayerId="andel-pane"
                             href="/pompejska/"
                             icon="icon-flame"
                             title="Anděl páně"
@@ -137,6 +142,7 @@
                     </li>
                     <li>
                         {{> prayer-card
+                            prayerId="pred-jidlem"
                             href="https://ruzeneconline.cz"
                             icon="icon-infinity"
                             title="Modlitba před jídlem"
@@ -153,6 +159,7 @@
                 <ul>
                     <li>
                         {{> prayer-card
+                            prayerId="otce-nas"
                             href="/pompejska/"
                             icon="icon-flame"
                             title="Otče náš"
@@ -163,6 +170,7 @@
                     </li>
                     <li>
                         {{> prayer-card
+                            prayerId="zdravas-maria"
                             href="https://ruzeneconline.cz"
                             icon="icon-infinity"
                             title="Zdrávas Maria"
@@ -173,6 +181,7 @@
                     </li>
                     <li>
                         {{> prayer-card
+                            prayerId="slava-otci"
                             href="https://brigitaonline.cz"
                             icon="icon-sparkles"
                             title="Sláva Otci"
@@ -183,6 +192,7 @@
                     </li>
                     <li>
                         {{> prayer-card
+                            prayerId="vyznani-viry"
                             href="https://brigitaonline.cz"
                             icon="icon-sparkles"
                             title="Apoštolské vyznání víry"
