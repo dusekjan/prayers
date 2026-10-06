@@ -7,6 +7,7 @@
     /* ↓ colors ↓ */
     --orange: rgb(255, 172, 38);            /* #ffac26 */
     --orange-60: rgb(from var(--orange) r g b / 0.6);
+    --orange-70: rgb(from var(--orange) r g b / 0.7);
 
     --orange-darken-25: rgb(220, 136, 0);  /* #dc8800 */
     --orange-darken-30: rgb(205, 126, 0);  /* #cd7e00 */

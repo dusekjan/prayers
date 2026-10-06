@@ -35,7 +35,6 @@
             <section id="rosary">
                 {{> prayer-card
                     href="https://ruzeneconline.cz"
-                    icon="icon-infinity"
                     title="Modlitba růžence"
                     description= "Tradiční modlitba rozjímající nad životem Ježíše Krista a Panny Marie."
                     badge="Pobožnost"
@@ -58,7 +57,7 @@
                     </label>
                 </fieldset>
 
-                <div class="prayer-panels">
+                <div class="prayer-panels scrolled">
                     <ul data-panel="recent">
                         <li><i>Zatím nemáte naposledy navštívené modlitby.</i></li>
                     </ul>
@@ -66,6 +65,8 @@
                     <ul data-panel="favorites">
                         <li><i>Zatím nemáte žádné oblíbené modlitby.</i></li>
                     </ul>
+
+                    {{> icon-arrow-right-circle}}  <!-- napovida vodorovne scrollovani -->
                 </div>
             </section>
 
@@ -83,7 +84,6 @@
                         {{> prayer-card
                             prayerId="pompejska"
                             href="/pompejska/"
-                            icon="icon-flame"
                             title="Pompejská novéna"
                             description="Devět dní vytrvalé modlitby růžence k Panně Marii Pompejské."
                             badge="Novéna"
@@ -94,7 +94,6 @@
                         {{> prayer-card
                             prayerId="tajemstvi-spasy"
                             href="https://brigitaonline.cz/#rocni"
-                            icon="icon-sparkles"
                             title="Tajemství spásy"
                             description= "Roční pobožnost svaté Brigity Švédské, rozjímající o utrpení Ježíše Krista."
                             badge="Pobožnost"
@@ -105,7 +104,6 @@
                         {{> prayer-card
                             prayerId="precista-krev"
                             href="https://brigitaonline.cz/#dvanactileta"
-                            icon="icon-heart"
                             title="Pobožnost ke cti Ježíšovy přečisté krve"
                             description= "Pobožnost na dvanáct let ke cti přečisté krve Ježíše Krista."
                             badge="Pobožnost"
@@ -116,7 +114,6 @@
                         {{> prayer-card
                             prayerId="korunka"
                             href="https://brigitaonline.cz"
-                            icon="icon-sparkles"
                             title="Korunka k Božímu milosrdenství"
                             description= "Modlitby zjevené svaté Brigitě Švédské, rozjímající o utrpení Ježíše Krista."
                             badge="Pobožnost"
@@ -133,7 +130,6 @@
                         {{> prayer-card
                             prayerId="andel-pane"
                             href="/pompejska/"
-                            icon="icon-flame"
                             title="Anděl páně"
                             description= "Připomínka vtělení Krista, tradičně třikrát denně."
                             badge="Modlitba"
@@ -144,7 +140,6 @@
                         {{> prayer-card
                             prayerId="pred-jidlem"
                             href="https://ruzeneconline.cz"
-                            icon="icon-infinity"
                             title="Modlitba před jídlem"
                             description= "Krátké poděkování za pokrm a požehnání stolu."
                             badge="Modlitba"
@@ -161,7 +156,6 @@
                         {{> prayer-card
                             prayerId="otce-nas"
                             href="/pompejska/"
-                            icon="icon-flame"
                             title="Otče náš"
                             description= "Modlitba, kterou naučil své učedníky sám Ježíš."
                             badge="Modlitba"
@@ -172,7 +166,6 @@
                         {{> prayer-card
                             prayerId="zdravas-maria"
                             href="https://ruzeneconline.cz"
-                            icon="icon-infinity"
                             title="Zdrávas Maria"
                             description= "Prosba o přímluvu Panny Marie."
                             badge="Modlitba"
@@ -183,7 +176,6 @@
                         {{> prayer-card
                             prayerId="slava-otci"
                             href="https://brigitaonline.cz"
-                            icon="icon-sparkles"
                             title="Sláva Otci"
                             description= "Krátká chvála Nejsvětější Trojice."
                             badge="Modlitba"
@@ -194,7 +186,6 @@
                         {{> prayer-card
                             prayerId="vyznani-viry"
                             href="https://brigitaonline.cz"
-                            icon="icon-sparkles"
                             title="Apoštolské vyznání víry"
                             description= "Vyznání víry shrnující základ křesťanského učení."
                             badge="Modlitba"

@@ -22,6 +22,31 @@ document.querySelectorAll<HTMLInputElement>("#prayer-tabs input[name=prayer-tab]
 /* End of code related to rendering the favorites and recents lists */
 
 
+/* Code related to the scroll hint arrow in prayer panels */
+const panelsWrapper = document.querySelector<HTMLElement>(".prayer-panels")!;
+
+function updateScrollHint(panel: HTMLElement) {
+    if (!panel.clientWidth) return;  // skryty panel stav neovlivnuje
+    const atEnd = panel.scrollLeft + panel.clientWidth >= panel.scrollWidth - 2;
+    panelsWrapper.classList.toggle("scrolled", atEnd);
+}
+
+panelsWrapper.querySelectorAll<HTMLElement>("[data-panel]").forEach(panel =>
+    panel.addEventListener("scroll", event => updateScrollHint(event.target as HTMLElement), { passive: true })
+);
+
+document.querySelectorAll<HTMLInputElement>("#prayer-tabs input[name=prayer-tab]").forEach(tab => {
+    const panel = panelsWrapper.querySelector<HTMLElement>(`[data-panel=${tab.value}]`)!;
+    tab.addEventListener("change", () => {
+        panel.scrollLeft = 0;
+        updateScrollHint(panel);
+    });
+    panel.scrollLeft = 0;
+    updateScrollHint(panel);
+});
+/* End of code related to the scroll hint arrow in prayer panels */
+
+
 /* Code related to the search functionality */
 const searchInput = document.querySelector<HTMLInputElement>("#search input[type=search]")!;
 searchInput.addEventListener("input", filterPrayers);

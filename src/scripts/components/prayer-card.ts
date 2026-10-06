@@ -8,15 +8,11 @@ export default class PrayerCard extends HTMLElement {
     static get recentsKey() { return "prayer-card-recent" }
     static get favoritesKey() { return "prayer-card-favorites" }
 
-    get icon() { return this.querySelector<HTMLElement>("div svg") }
     get favoriteCheckbox() { return this.querySelector<HTMLInputElement>(".favorite input") }
     get link() { return this.querySelector<HTMLAnchorElement>("h3 a") }
     get badge() { return this.querySelector<HTMLElement>(".badge") }
     get searchText() { return normalize(this.textContent || "") }
-    get prayerId() {
-        let id = this.dataset.prayerId || "";
-        return id.replace(/^cloned-/, "");
-    }
+    get prayerId() { return this.dataset.prayerId || "" }
 
     connectedCallback() {
         this.addEventListener("click", this);
@@ -43,6 +39,7 @@ export default class PrayerCard extends HTMLElement {
 
     protected onLinkClick() {
         // nevolame e.preventDefault(), protoze navigaci chceme
+        if (!this.prayerId) return;
         const storedIds = PrayerCard.storedPrayersIds("recent");
         const ids = [this.prayerId, ...storedIds.filter(id => id != this.prayerId)].slice(0, 10);  // pridani na zacatek
 
@@ -56,10 +53,6 @@ export default class PrayerCard extends HTMLElement {
 
     protected onFavoriteChange() {
         let isChecked = this.favoriteCheckbox!.checked;
-
-        // mohl jsem kliknout na klona
-        const sourceCard = document.querySelector<PrayerCard>(`[data-prayer-id=${this.prayerId}]`);
-        sourceCard && (sourceCard.favoriteCheckbox!.checked = isChecked);
 
         const storedIds = PrayerCard.storedPrayersIds("favorites");
         let ids: string[];
@@ -80,7 +73,7 @@ export default class PrayerCard extends HTMLElement {
         let updatedIds: string[] = [];
 
         let cardItems = prayerIds.map(id => {
-            let card = document.querySelector(`[data-prayer-id=${id}]`) as PrayerCard;
+            let card = document.querySelector(`[data-prayer-id=${id}]:not(.clone)`) as PrayerCard;  // klony vynechame
             if (!card) {
                 return null;  // takove id neexistuje
             } else {
@@ -90,9 +83,8 @@ export default class PrayerCard extends HTMLElement {
             let cloned = card.cloneNode(true) as PrayerCard;
             type == "favorites" && (card.favoriteCheckbox!.checked = true);
             type == "favorites" && (cloned.favoriteCheckbox!.checked = true);
-            cloned.icon!.outerHTML = (type == "favorites") ? favoriteIcon : recentIcon;
-            cloned.classList.add("mini");
-            cloned.dataset.prayerId = `cloned-${id}`;  // odlisi klon od zdroje pri hledani
+            cloned.querySelector("div")!.insertAdjacentHTML("afterbegin", (type == "favorites") ? favoriteIcon : recentIcon);
+            cloned.classList.add("clone");
 
             let li = document.createElement("li");
             li.append(cloned);
@@ -110,6 +102,7 @@ export default class PrayerCard extends HTMLElement {
         }
 
         target.replaceChildren(...cardItems);
+        target.dispatchEvent(new Event("scroll"));  // prepocita napovedu scrollovani po prekresleni
         return updatedIds;
     }
 

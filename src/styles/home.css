@@ -136,7 +136,7 @@ prayer-card {
         a { color: var(--orange) }
     }
 
-    &.mini {
+    &.clone {
         padding: 16px;
         background-color: var(--grey-warm-10);
 
@@ -184,6 +184,7 @@ prayer-card {
     & .prayer-panels {
         overflow: hidden;
         position: relative;
+        --clone-height: 100px;
 
         &::after {
             content: "";
@@ -192,14 +193,28 @@ prayer-card {
             right: 0;
             bottom: 16px;  /* konci nad scrollbarem */
             width: 100px;
-            z-index: 2;    /* nad srdickem v karte */
+            height: var(--clone-height);
             pointer-events: none;
             background: linear-gradient(to right, transparent, var(--color-bg));
+            transition: opacity 0.2s;
         }
+
+        & > svg {  /* napoveda scrollovani nad fade */
+            position: absolute;
+            top: calc(var(--clone-height) / 2);
+            transform: translateY(-50%);
+            right: 24px;
+            z-index: 1;
+            color: var(--orange-70);
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+
+        &.scrolled::after, &.scrolled > svg { opacity: 0 }
 
         & > ul {
             margin: 0;
-            padding: 0 48px 24px 0;
+            padding: 0 48px 16px 0;
             list-style: none;
             display: none;
             gap: 12px;
@@ -208,8 +223,8 @@ prayer-card {
 
             & li {
                 flex: 0 0 auto;
+                height: var(--clone-height);
                 min-width: 200px;
-                min-height: 100px;
                 & prayer-card { height: 100% }
             }
         }
