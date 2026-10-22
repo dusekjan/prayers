@@ -37,11 +37,17 @@
         --color-text: rgb(255, 255, 255, 0.87);
         /* ↑ colors ↑ */
     }
+
+    @media (max-width: 767px) {
+        --content-width: 90%;
+    }
 }
 
 html {
     box-sizing: border-box;
     scrollbar-color: var(--orange-60) var(--color-bg);
+    text-size-adjust: 100%;  /* blokuje samovolne zvetseni textu prohlizecem (iOS na sirku) */
+    -webkit-text-size-adjust: 100%;
 }
 
 *, *::before, *::after {
@@ -124,6 +130,11 @@ button.primary {
         width: 100%;
         border: 2px solid var(--orange);
     }
+
+    @media (max-width: 767px) {
+        margin: 64px 0;
+        & h1 { padding: 0 16px; }
+    }
 }
 
 .nav {
@@ -144,17 +155,19 @@ button.primary {
 }
 
 .footer {
-    margin-top: 24px;
+    margin-top: 48px;
     padding: 24px 0;
     border-top: 1px solid var(--grey-warm-60);
 
     & p {
-        margin: 24px 0 0;
+        grid-area: copyright;
+        margin: 0;
         font-size: 14px;
         color: var(--grey-75);
     }
 
     & a {
+        grid-area: brand;
         transition: color 0.2s ease-out;
         font-size: 18px;
         font-weight: 500;
@@ -162,11 +175,15 @@ button.primary {
     }
 
     & a[href^="mailto"] {
+        grid-area: email;
+        justify-self: end;
         font-size: 14px;
         &:not(:hover) { color: var(--grey-75) }
     }
 
     & button {
+        grid-area: about;
+        justify-self: end;
         font-size: 14px;
         padding: 6px 16px;
     }
@@ -175,16 +192,26 @@ button.primary {
         margin: 0 auto;
         width: var(--content-width);
 
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-template-areas:
+            "brand     about"
+            "copyright email";
+        row-gap: 24px;
+        align-items: center;
 
-        & > div {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        @media (max-width: 767px) {
+            row-gap: 16px;
+            grid-template-areas:
+                "brand     about"
+                "email     email"
+                "copyright copyright";
 
-            &:last-child { align-items: flex-end }
+            p {
+                justify-self: center;
+                margin-top: -8px;
+            }
+            a[href^="mailto"] { justify-self: center }
         }
     }
 }

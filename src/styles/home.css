@@ -4,6 +4,10 @@ h2 {
     margin: 48px 0 32px;
     padding-bottom: 16px;
     border-bottom: 1px solid var(--grey-warm-40);
+
+    @media (max-width: 767px) {
+       margin: 32px 0 24px;
+    }
 }
 
 #prayers, #daily-prayers, #basic-prayers {
@@ -15,9 +19,18 @@ h2 {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: auto;
-        gap: 24px;
+        gap: 24px 12px;
 
         & prayer-card { height: 100% }
+
+        @media (max-width: 767px) {
+            padding: 0;
+            grid-template-columns: 1fr;
+            gap: 16px;
+
+            li:nth-child(odd) { margin-right: 24px }
+            li:nth-child(even) { margin-left: 24px }
+        }
     }
 }
 
@@ -140,6 +153,10 @@ prayer-card {
         padding: 16px;
         background-color: var(--grey-warm-10);
 
+        & > div {
+            margin: 0;
+        }
+
         & h3 {
             font-size: 18px;
             line-height: 24px;
@@ -149,10 +166,19 @@ prayer-card {
 
         & .badge, & .description, & .favorite { display: none }
     }
+
+    @media (max-width: 767px) {
+        padding: 16px;
+        &.clone { padding: 12px }
+    }
 }
 
 #prayer-tabs {
     margin: 64px 0 40px;
+
+    @media (max-width: 767px) {
+        margin: 48px 0 24px;
+    }
 
     & fieldset {
         padding: 0;
@@ -163,6 +189,8 @@ prayer-card {
         border-bottom: 1px solid var(--grey-warm-40);
 
         & > label {
+            display: flex;
+            align-items: center;
             padding: 0 0 16px;
             cursor: pointer;
             opacity: 0.5;
@@ -179,12 +207,25 @@ prayer-card {
                 border-bottom: 3px solid var(--orange);
             }
         }
+
+        @media (max-width: 549px) {
+            gap: 24px;
+            margin: 0 0 24px;
+
+            & > label:first-of-type {
+                flex-basis: min-content;
+            }
+        }
     }
 
     & .prayer-panels {
         overflow: hidden;
         position: relative;
         --clone-height: 100px;
+
+        @media (max-width: 767px) {
+            --clone-height: 80px;
+        }
 
         &::after {
             content: "";
