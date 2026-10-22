@@ -63,31 +63,30 @@ Karta na rozcestníku se skládá z Handlebars partialu `prayer-card` (statické
 renderuje se při buildu → je indexovatelné) a custom elementu `<prayer-card>`
 (`src/scripts/components/prayer-card.ts`), který k hotovému HTML jen doplňuje chování.
 Element **nic nerenderuje** a nemá shadow DOM; bez JS zůstane karta plně čitelná,
-jen bez zaškrtávátka oblíbených.
+jen bez oblíbených a naposledy navštívených.
 
 ```hbs
 {{> prayer-card
-    href="/krizova-cesta/"
-    icon="icon-flame"
-    badge="Pobožnost"
-    title="Křížová cesta"
-    description="…" }}
+    prayerId="pompejska"
+    href="/pompejska/"
+    title="Pompejská novéna"
+    description="…"
+    badge="Novéna"
+    showFavorite=true
+}}
 ```
 
-| Parametr      | Povinný | Význam                                                       |
-|---------------|---------|--------------------------------------------------------------|
-| `href`        | ano     | Cíl odkazu – `/<slug>/` nebo celá externí URL                  |
-| `title`       | ano     | Název modlitby, zároveň text odkazu                            |
-| `icon`        | ne      | Název partialu s ikonou, např. `icon-flame`                    |
-| `badge`       | ne      | Štítek („Pobožnost“, „Novéna“, …)                              |
-| `description` | ne      | Krátký popis pod nadpisem                                      |
-| `favorite`    | ne      | `true` zobrazí zaškrtávátko oblíbených                         |
+| Parametr       | Povinný | Význam                                                   |
+|----------------|---------|----------------------------------------------------------|
+| `href`         | ano     | Cíl odkazu – `/<slug>/` nebo celá externí URL              |
+| `title`        | ano     | Název modlitby, zároveň text odkazu                        |
+| `prayerId`     | ne      | Unikátní ID pro oblíbené a naposledy navštívené            |
+| `badge`        | ne      | Štítek („Pobožnost“, „Novéna“, …)                          |
+| `description`  | ne      | Krátký popis pod nadpisem                                  |
+| `showFavorite` | ne      | `true` zobrazí zaškrtávátko oblíbených                     |
 
-Ikony jsou samostatné partialy `src/partials/icon-*.html` s inline SVG
-(`stroke="currentColor"`), takže se barví z CSS a nestojí request navíc.
+Komponenta sama ukládá oblíbené a naposledy navštívené do `localStorage`
+a překresluje jejich panely na rozcestníku.
+
+Ikony jsou samostatné partialy `src/partials/icon-*.html` s inline SVG (`currentColor`).
 Nová ikona = nový soubor `icon-<název>.html`, žádná další registrace.
-
-Zaškrtnutí srdíčka přepne reflektovaný atribut `favorite` (stylovatelný přes
-`prayer-card[favorite]`) a vyšle bublající událost `prayer-card:favorite`
-s `detail: { favorite }`. Perzistenci ani panely *Naposledy navštívené* /
-*Oblíbené* komponenta neřeší – ty patří do `home.ts`.
