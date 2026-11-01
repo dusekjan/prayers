@@ -1,5 +1,11 @@
-import { normalize } from "./lib";
+import "./components/night-mode";
+
+import Modal from "./components/modal";
 import PrayerCard, { type StoredPrayersType } from "./components/prayer-card";
+import { normalize } from "./lib";
+
+
+document.querySelector("[data-modal=about]")!.addEventListener("click", () => Modal.create("about"));
 
 
 /* Code related to remembering the last opened panel */

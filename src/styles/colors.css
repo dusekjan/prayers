@@ -1,0 +1,57 @@
+:root {
+    color-scheme: light;  /* pripravit se na theme-color tag */
+
+    /* ikonická oranžová */
+    --orange: rgb(255, 172, 38);            /* #ffac26 */
+    /* scrollbar, dialog border */
+    --orange-60: rgb(from var(--orange) r g b / 0.6);
+    /* sipka scrollovani zalozek */
+    --orange-70: rgb(from var(--orange) r g b / 0.7);
+
+    /* hover primary tlacitka */
+    --orange-darken-25: rgb(220, 136, 0);  /* #dc8800 */
+    /* nepouzito */
+    --orange-darken-30: rgb(205, 126, 0);  /* #cd7e00 */
+    /* active primary tlacitka */
+    --orange-darken-35: rgb(190, 118, 0);  /* #be7600 */
+
+    /* text primary tlacitka, odkazy v nav a footeru */
+    --grey: rgb(60, 70, 83);               /* #3c4653 */
+    /* copyright a email ve footeru, placeholder vyhledavani, popis karty */
+    --grey-75: rgb(from var(--grey) r g b / 0.75);
+    /* text badge */
+    --grey-85: rgb(from var(--grey) r g b / 0.85);
+
+    /* zaklad pro pruhledne varianty */
+    --grey-warm: rgb(215, 195, 173);       /* #d7c3ad */
+    /* pozadi vyhledavani, hover karty, klon karty */
+    --grey-warm-10: rgb(from var(--grey-warm) r g b / 0.1);
+    /* hover oblibenych, pozadi badge */
+    --grey-warm-30: rgb(from var(--grey-warm) r g b / 0.3);
+    /* border pod h2, border zalozek */
+    --grey-warm-40: rgb(from var(--grey-warm) r g b / 0.4);
+    /* border nav a footeru, border vyhledavani a karty, hover zalozky */
+    --grey-warm-60: rgb(from var(--grey-warm) r g b / 0.6);
+
+    /* barva textu */
+    --color-text: #1a1a1a;
+    /* barva pozadi */
+    --color-bg: #ffffff;
+
+    &:has(body.dark) {
+        color-scheme: dark;
+
+        --orange: rgb(222, 164, 71);            /* #dea447 = desaturate(#ffac26, 30%) */
+
+        --orange-darken-25: rgb(187, 128, 33);  /* #bb8021 = desaturate(#dc8800, 30%) */
+        --orange-darken-30: rgb(174, 119, 31);  /* #ae771f = desaturate(#cd7e00, 30%) */
+        --orange-darken-35: rgb(161, 111, 29);  /* #a16f1d = desaturate(#be7600, 30%) */
+
+        --grey: rgb(172, 182, 195);             /* #acb6c3 = #3c4653 se zrcadlenou svetlosti */
+
+        --grey-warm: rgb(181, 145, 104);        /* #b59168 = darken(#d7c3ad, 20%) */
+
+        --color-bg: #121212;
+        --color-text: rgb(255, 255, 255, 0.87);
+    }
+}

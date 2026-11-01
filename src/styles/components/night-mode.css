@@ -1,0 +1,26 @@
+night-mode {
+    & label {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: 4px;
+        margin: -4px;
+
+        svg {
+            color: var(--grey);
+            fill: var(--color-bg);
+            transition: color var(--transition), fill var(--transition);
+
+            @media (max-width: 767px) {
+                width: 20px;
+                height: 20px;
+            }
+        }
+        &:hover {
+            svg {
+                color: var(--color-text);
+                fill: var(--color-text);
+            }
+        }
+    }
+}

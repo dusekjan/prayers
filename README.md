@@ -29,7 +29,7 @@ npm run preview  # náhled produkčního buildu
 │       └── <slug>/               # soubory modlitby
 │           └── manifest.json
 ├── src/                      # veškerý zdrojový kód (mimo Vite root)
-│   ├── partials/             # sdílené Handlebars části (nav, footer, prayer-card, icon-*)
+│   ├── partials/             # sdílené Handlebars části (nav, footer, prayer-card, icons/icon-*)
 │   ├── scripts/              # home.ts (rozcestník), <slug>.ts a ostatní
 │   │   └── components/       # custom elementy (light DOM, bez shadow DOM)
 │   └── styles/               # common.css (sdílené styly), <slug>.css a ostatní
@@ -88,5 +88,6 @@ jen bez oblíbených a naposledy navštívených.
 Komponenta sama ukládá oblíbené a naposledy navštívené do `localStorage`
 a překresluje jejich panely na rozcestníku.
 
-Ikony jsou samostatné partialy `src/partials/icon-*.html` s inline SVG (`currentColor`).
-Nová ikona = nový soubor `icon-<název>.html`, žádná další registrace.
+Ikony jsou samostatné partialy `src/partials/icons/icon-*.html` s inline SVG (`currentColor`).
+Nová ikona = nový soubor `icons/icon-<název>.html`, žádná další registrace.
+V šablonách se volají i s cestou: `{{> icons/icon-<název>}}`.

@@ -1,6 +1,6 @@
 import { normalize } from "../lib";
-import recentIcon from "../../partials/icon-history.html?raw";
-import favoriteIcon from "../../partials/icon-heart.html?raw";
+import recentIcon from "../../partials/icons/icon-history.html?raw";
+import favoriteIcon from "../../partials/icons/icon-heart.html?raw";
 
 
 export type StoredPrayersType = "favorites" | "recent";

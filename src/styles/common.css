@@ -1,42 +1,11 @@
-@import "./widgets.css";
+@import "./colors.css";
 @import "./typo.css";
+@import "./components/night-mode.css";
+@import "./components/modal.css";
 
 :root {
-    color-scheme: light;  /* pripravit se na theme-color tag */
-
-    /* ↓ colors ↓ */
-    --orange: rgb(255, 172, 38);            /* #ffac26 */
-    --orange-60: rgb(from var(--orange) r g b / 0.6);
-    --orange-70: rgb(from var(--orange) r g b / 0.7);
-
-    --orange-darken-25: rgb(220, 136, 0);  /* #dc8800 */
-    --orange-darken-30: rgb(205, 126, 0);  /* #cd7e00 */
-    --orange-darken-35: rgb(190, 118, 0);  /* #be7600 */
-
-    --grey: rgb(60, 70, 83);
-    --grey-75: rgb(from var(--grey) r g b / 0.75);
-    --grey-85: rgb(from var(--grey) r g b / 0.85);
-
-    --grey-warm: rgb(215, 195, 173);
-    --grey-warm-10: rgb(from var(--grey-warm) r g b / 0.1);
-    --grey-warm-30: rgb(from var(--grey-warm) r g b / 0.3);
-    --grey-warm-40: rgb(from var(--grey-warm) r g b / 0.4);
-    --grey-warm-60: rgb(from var(--grey-warm) r g b / 0.6);
-
-    --color-text: #1a1a1a;
-    --color-bg: #ffffff;
-    /* ↑ colors ↑ */
-
     --content-width: min(85%, 1060px);
-
-
-    &:has(body.dark) {
-        color-scheme: dark;
-        /* ↓ colors ↓ */
-        --color-bg: #121212;
-        --color-text: rgb(255, 255, 255, 0.87);
-        /* ↑ colors ↑ */
-    }
+    --transition: 0.3s ease-out;
 
     @media (max-width: 767px) {
         --content-width: 90%;
@@ -60,6 +29,7 @@ body {
     margin: 0;
     background: var(--color-bg);
     color: var(--color-text);
+    transition: background-color var(--transition), color var(--transition);
 
 	min-height: 100vh;
 	min-height: 100dvh;
@@ -77,6 +47,23 @@ a {
     color: var(--color-text);
     text-decoration: none;
     &:hover { text-decoration: underline }
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
+
+    white-space: nowrap;
+    overflow: hidden;
+    pointer-events: none;
+
+    clip-path: inset(50%);
 }
 
 :focus-visible,
@@ -106,6 +93,25 @@ button.primary {
         background-color: var(--orange-darken-35);
         transition: none;
     }
+
+    body.dark & { color: var(--color-bg) }
+}
+
+button.plain {
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+
+    color: var(--orange);
+    transition: color 0.2s ease-out;
+    &:hover { color: var(--orange-darken-25) }
+    &:active {
+        transition: none;
+        color: var(--orange-darken-35);
+    }
 }
 
 .header {
@@ -121,6 +127,7 @@ button.primary {
         margin: 0;
         padding: 0 45px;
         background-color: var(--color-bg);
+        transition: background-color var(--transition);
         z-index: 1;
     }
 
@@ -142,6 +149,9 @@ button.primary {
     border-bottom: 1px solid var(--grey-warm-60);
 
     & > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         margin: 0 auto;
         width: var(--content-width)
     }

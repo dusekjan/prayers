@@ -1,4 +1,9 @@
 @import "./common.css";
+@import "./components/prayer-card.css";
+
+html {
+    scrollbar-gutter: stable;
+}
 
 h2 {
     margin: 48px 0 32px;
@@ -23,13 +28,10 @@ h2 {
 
         & prayer-card { height: 100% }
 
-        @media (max-width: 767px) {
+        @media (max-width: 749px) {
             padding: 0;
             grid-template-columns: 1fr;
             gap: 16px;
-
-            li:nth-child(odd) { margin-right: 24px }
-            li:nth-child(even) { margin-left: 24px }
         }
     }
 }
@@ -69,107 +71,6 @@ h2 {
         &:focus-visible {
             border-color: var(--orange);
         }
-    }
-}
-
-prayer-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--grey-warm-60);
-    border-radius: 8px;
-    padding: 24px;
-    transition: all 0.3s;
-
-    & > div {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 16px;
-
-        & svg {
-            color: var(--orange);
-        }
-
-        & .favorite {
-            cursor: pointer;
-            z-index: 1;  /* zustava stale klikacim */
-            display: flex;
-            padding: 14px;
-            margin: -14px;  /* vetsi hitbox bez posunu v layoutu */
-
-            svg {
-                fill: transparent;
-                transition: fill 0.2s ease-out;
-            }
-
-            &:hover {
-                & svg { fill: var(--grey-warm-30) }
-            }
-
-            &:has([type=checkbox]:checked) {
-                & svg { fill: var(--orange) }
-            }
-        }
-
-        & .badge {
-            font-size: 12px;
-            line-height: 16px;
-            padding: 4px 10px;
-            border-radius: 12px;
-            color: var(--grey-85);
-            background-color: var(--grey-warm-30);
-        }
-    }
-
-    p {
-        margin: 0;
-        color: var(--grey-75);
-    }
-
-    & h3 {
-        margin: 0 0 8px;
-
-        & a {
-            transition: color 0.2s ease-out;
-            text-decoration: none !important;
-
-            &::after {  /* stretched link - odkaz v nadpisu pokryje celou kartu */
-                content: "";
-                position: absolute;
-                inset: 0;
-            }
-        }
-    }
-
-    &:has(a:hover, .favorite:hover) {
-        border-color: var(--orange);
-        background-color: var(--grey-warm-10);
-
-        a { color: var(--orange) }
-    }
-
-    &.clone {
-        padding: 16px;
-        background-color: var(--grey-warm-10);
-
-        & > div {
-            margin: 0;
-        }
-
-        & h3 {
-            font-size: 18px;
-            line-height: 24px;
-            font-weight: 500;
-            margin: auto 0 0;
-        }
-
-        & .badge, & .description, & .favorite { display: none }
-    }
-
-    @media (max-width: 767px) {
-        padding: 16px;
-        &.clone { padding: 12px }
     }
 }
 

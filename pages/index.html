@@ -34,7 +34,7 @@
         <main>
             <section id="rosary">
                 {{> prayer-card
-                    href="https://ruzeneconline.cz"
+                    href="https://www.ruzeneconline.cz"
                     title="Modlitba růžence"
                     description= "Tradiční modlitba rozjímající nad životem Ježíše Krista a Panny Marie."
                     badge="Pobožnost"
@@ -66,13 +66,13 @@
                         <li><i>Zatím nemáte žádné oblíbené modlitby.</i></li>
                     </ul>
 
-                    {{> icon-arrow-right-circle}}  <!-- napovida vodorovne scrollovani -->
+                    {{> icons/icon-arrow-right-circle}}  <!-- napovida vodorovne scrollovani -->
                 </div>
             </section>
 
             <section id="search">
                 <search>
-                    {{> icon-search}}
+                    {{> icons/icon-search}}
                     <input type="search" aria-label="Hledat modlitbu, novénu..." placeholder="Pompejská novéna, růženec, Brigita…" />
                 </search>
             </section>
@@ -197,5 +197,10 @@
         </main>
 
         {{> footer}}
+
+        <template id="about">
+            <h2>Lorem ipsum</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </template>
     </body>
 </html>
